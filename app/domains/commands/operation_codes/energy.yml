@@ -1,0 +1,64 @@
+operation_codes:
+  - code: "0x02000"
+    description: "Sistema de Energia operando normalmente."
+    operation_room: energy
+
+  - code: "0x02001"
+    description: "Reator principal offline."
+    operation_room: energy
+
+  - code: "0x02002"
+    description: "Reservatório de combustível primário baixo."
+    operation_room: energy
+
+  - code: "0x02003"
+    description: "Distribuição de energia irregular na rede principal."
+    operation_room: energy
+
+  - code: "0x02004"
+    description: "Superaquecimento do núcleo do reator principal."
+    operation_room: energy
+
+  - code: "0x02005"
+    description: "Válvula de fluxo de combustível primário bloqueada."
+    operation_room: energy
+
+  - code: "0x02006"
+    description: "Gerador auxiliar desativado."
+    operation_room: energy
+
+  - code: "0x02007"
+    description: "Autenticação da Ponte de Comando pendente para alteração de estado do reator."
+    operation_room: energy
+
+  - code: "0x02008"
+    description: "Carga de capacitores da rede de distribuição insuficiente."
+    operation_room: energy
+
+  - code: "0x02009"
+    description: "Sensor de pressão do reator principal defeituoso."
+    operation_room: energy
+
+  - code: "0x02010"
+    description: "Sobrecarga detectada na rede de energia secundária."
+    operation_room: energy
+
+  - code: "0x02011"
+    description: "Módulo de isolamento do reator principal comprometido."
+    operation_room: energy
+
+  - code: "0x02012"
+    description: "Conexão de dados do painel de controle da Sala de Energia intermitente."
+    operation_room: energy
+
+  - code: "0x02013"
+    description: "Ciclo de resfriamento secundário do reator inoperante."
+    operation_room: energy
+
+  - code: "0x02014"
+    description: "Sistema de filtragem de partículas de combustível do reator falhou."
+    operation_room: energy
+
+  - code: "0x02015"
+    description: "Inversor de corrente da rede principal em estado crítico."
+    operation_room: energy

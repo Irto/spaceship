@@ -1,0 +1,140 @@
+commands:
+- name: csl
+  operation: iniciar_lancamento
+  arguments:
+  - '[codigo_armar_ejetores]'
+  description: Inicia iniciar lancamento no módulo csl. Recebe [codigo_armar_ejetores]
+    como parâmetro.
+  success_message: O comando 'iniciar_lancamento' do módulo 'csl' foi executado com
+    sucesso com os parâmetros [codigo_armar_ejetores].
+  operation_room: data
+  log_message: 'Comando ''iniciar_lancamento'' do módulo ''csl'' executado com argumentos:
+    [codigo_armar_ejetores].'
+  requirements:
+  - general_authorization
+  - energy_stabilization
+- name: csl
+  operation: status_prontidao
+  arguments: []
+  description: Realiza status prontidao no módulo csl.
+  success_message: O comando 'status_prontidao' do módulo 'csl' foi executado com
+    sucesso.
+  operation_room: data
+  log_message: Comando 'status_prontidao' do módulo 'csl' executado sem argumentos.
+  requirements:
+  - general_authorization
+  - energy_stabilization
+- name: sdm
+  operation: diagnostico_rapido
+  arguments:
+  - '[id_modulo]'
+  description: Realiza diagnostico rapido no módulo sdm. Recebe [id_modulo] como parâmetro.
+  success_message: O comando 'diagnostico_rapido' do módulo 'sdm' foi executado com
+    sucesso com os parâmetros [id_modulo].
+  operation_room: data
+  log_message: 'Comando ''diagnostico_rapido'' do módulo ''sdm'' executado com argumentos:
+    [id_modulo].'
+  requirements:
+  - general_authorization
+  - energy_stabilization
+- name: sdm
+  operation: listar_modulos
+  arguments: []
+  description: Realiza listar modulos no módulo sdm.
+  success_message: O comando 'listar_modulos' do módulo 'sdm' foi executado com sucesso.
+  operation_room: data
+  log_message: Comando 'listar_modulos' do módulo 'sdm' executado sem argumentos.
+  requirements:
+  - general_authorization
+  - energy_stabilization
+- name: sdm
+  operation: selecionar_modulo
+  arguments:
+  - '[id_modulo]'
+  description: Realiza selecionar modulo no módulo sdm. Recebe [id_modulo] como parâmetro.
+  success_message: O comando 'selecionar_modulo' do módulo 'sdm' foi executado com
+    sucesso com os parâmetros [id_modulo].
+  operation_room: data
+  log_message: 'Comando ''selecionar_modulo'' do módulo ''sdm'' executado com argumentos:
+    [id_modulo].'
+  requirements:
+  - general_authorization
+  - energy_stabilization
+- name: seguranca_dados
+  operation: analisar_logs_intrusao
+  arguments: []
+  description: Realiza analisar logs intrusao no módulo seguranca dados.
+  success_message: O comando 'analisar_logs_intrusao' do módulo 'seguranca_dados'
+    foi executado com sucesso.
+  operation_room: data
+  log_message: Comando 'analisar_logs_intrusao' do módulo 'seguranca_dados' executado
+    sem argumentos.
+  requirements:
+  - general_authorization
+  - energy_stabilization
+- name: seguranca_dados
+  operation: atualizar_protocolo_cripto
+  arguments: []
+  description: Realiza atualizar protocolo cripto no módulo seguranca dados.
+  success_message: O comando 'atualizar_protocolo_cripto' do módulo 'seguranca_dados'
+    foi executado com sucesso.
+  operation_room: data
+  log_message: Comando 'atualizar_protocolo_cripto' do módulo 'seguranca_dados' executado
+    sem argumentos.
+  requirements:
+  - general_authorization
+  - energy_stabilization
+- name: seguranca_dados
+  operation: estado_firewall
+  arguments: []
+  description: Verifica estado firewall no módulo seguranca dados.
+  success_message: O comando 'estado_firewall' do módulo 'seguranca_dados' foi executado
+    com sucesso.
+  operation_room: data
+  log_message: Comando 'estado_firewall' do módulo 'seguranca_dados' executado sem
+    argumentos.
+  requirements:
+  - general_authorization
+  - energy_stabilization
+- name: servidores_pri
+  operation: estado
+  arguments:
+  - '[id_servidor]'
+  description: Verifica estado no módulo servidores pri. Recebe [id_servidor] como
+    parâmetro.
+  success_message: O comando 'estado' do módulo 'servidores_pri' foi executado com
+    sucesso com os parâmetros [id_servidor].
+  operation_room: data
+  log_message: 'Comando ''estado'' do módulo ''servidores_pri'' executado com argumentos:
+    [id_servidor].'
+  requirements:
+  - general_authorization
+  - energy_stabilization
+- name: servidores_pri
+  operation: reiniciar_servidor
+  arguments:
+  - '[id_servidor]'
+  description: Reinicia reiniciar servidor no módulo servidores pri. Recebe [id_servidor]
+    como parâmetro.
+  success_message: O comando 'reiniciar_servidor' do módulo 'servidores_pri' foi executado
+    com sucesso com os parâmetros [id_servidor].
+  operation_room: data
+  log_message: 'Comando ''reiniciar_servidor'' do módulo ''servidores_pri'' executado
+    com argumentos: [id_servidor].'
+  requirements:
+  - general_authorization
+  - energy_stabilization
+- name: servidores_pri
+  operation: verificar_carga
+  arguments:
+  - '[id_servidor]'
+  description: Verifica verificar carga no módulo servidores pri. Recebe [id_servidor]
+    como parâmetro.
+  success_message: O comando 'verificar_carga' do módulo 'servidores_pri' foi executado
+    com sucesso com os parâmetros [id_servidor].
+  operation_room: data
+  log_message: 'Comando ''verificar_carga'' do módulo ''servidores_pri'' executado
+    com argumentos: [id_servidor].'
+  requirements:
+  - general_authorization
+  - energy_stabilization

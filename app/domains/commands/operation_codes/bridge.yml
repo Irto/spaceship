@@ -1,0 +1,72 @@
+operation_codes:
+  - code: "0x01000"
+    description: "Sistema da Ponte de Comando operando normalmente. Todos os subsistemas nominais."
+    operation_room: bridge
+
+  - code: "0x01100"
+    description: "Função de navegação executada com sucesso / Status normal do subsistema de navegação."
+    operation_room: bridge
+
+  - code: "0x01101"
+    description: "Falha crítica no sistema de navegação primário. Nave em órbita decadente, trajetória de interceptação com a alta atmosfera de Urano. Correção automática de curso indisponível."
+    operation_room: bridge
+
+  - code: "0x01130"
+    description: "Falha ao ativar propulsores. Energia insuficiente nos condutores principais. Verifique Sala de Energia (02)."
+    operation_room: bridge
+
+  - code: "0x01200"
+    description: "Status Operacional. Sistemas internos ativos. Sistemas externos sofrendo interferência severa."
+    operation_room: bridge
+
+  - code: "0x01230"
+    description: "Sistema de Comunicações offline. Falha de alimentação de energia primária. Verifique Sala de Energia (02)."
+    operation_room: bridge
+
+  - code: "0x01250"
+    description: "Busca de naves falhou. Interferência massiva pela magnetosfera de Urano. Impossível estabelecer contato externo seguro."
+    operation_room: bridge
+
+  - code: "0x0126A"
+    description: "Tentativa de sincronização do relógio atômico da nave falhou. Distorções gravitacionais no campo de Urano impedem sinal de referência."
+    operation_room: bridge
+
+  - code: "0x01300"
+    description: "Comando processado com sucesso / Status normal do protocolo / Autorização concedida."
+    operation_room: bridge
+
+  - code: "0x0130B"
+    description: "Código mestre inválido ou não autorizado para a operação solicitada."
+    operation_room: bridge
+
+  - code: "0x0131F"
+    description: "Tentativa de comando não autorizado detectada no barramento de autorizações. Acesso negado."
+    operation_room: bridge
+
+  - code: "0x01350"
+    description: "Nível de acesso insuficiente ou código de Capitão inválido. Requer autorização de Capitão."
+    operation_room: bridge
+
+  - code: "0x01351"
+    description: "Falha na autenticação. Código pessoal ou de nível de autoridade inválido."
+    operation_room: bridge
+
+  - code: "0x01355"
+    description: "Autorização para Módulo de Fuga [id_modulo] concedida, mas Módulo reporta indisponibilidade (Erro 0x99XXX). Verifique sistemas do Módulo de Fuga na Sala 99."
+    operation_room: bridge
+
+  - code: "0x01400"
+    description: "Comando processado ou diagnóstico concluído com sucesso. Informação exibida."
+    operation_room: bridge
+
+  - code: "0x0140A"
+    description: "Autoteste de um painel da Ponte (PNP/PCO/PAP/PCD) falhou. Verifique conexões físicas ou energia do painel."
+    operation_room: bridge
+
+  - code: "0x0140B"
+    description: "Falha detectada em um ou mais links de dados intercompartimentais."
+    operation_room: bridge
+
+  - code: "0x01F0F"
+    description: "CPU da Ponte de Comando sobrecarregada. Desempenho degradado."
+    operation_room: bridge

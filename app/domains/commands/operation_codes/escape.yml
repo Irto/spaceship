@@ -1,0 +1,124 @@
+operation_codes:
+  - code: "0x99000"
+    description: "Sistema do Módulo de Fuga (Sala 99) operando normalmente. Módulo selecionado (se aplicável) em estado nominal e pronto para a próxima etapa."
+    operation_room: escape
+
+  - code: "0x9900F"
+    description: "ID de módulo de fuga inválido ou não reconhecido pelo sistema."
+    operation_room: escape
+
+  - code: "0x9901A"
+    description: "Falha geral no barramento de diagnóstico da baía. Impossível comunicar com os módulos."
+    operation_room: escape
+
+  - code: "0x99101"
+    description: "Múltiplas falhas críticas detectadas no módulo [id_modulo]. Requer diagnóstico completo e reparos extensivos."
+    operation_room: escape
+
+  - code: "0x9910A"
+    description: "Módulo [id_modulo] apresenta dano estrutural irreparável. Lançamento impossível. Desativado permanentemente."
+    operation_room: escape
+
+  - code: "0x9910B"
+    description: "Módulo [id_modulo] com sistemas de navegação e suporte de vida permanentemente offline. Componentes essenciais fundidos. Inoperável."
+    operation_room: escape
+
+  - code: "0x9910C"
+    description: "Diagnóstico rápido falhou. Erro de comunicação com a UCP do módulo [id_modulo]."
+    operation_room: escape
+
+  - code: "0x99200"
+    description: "Subsistema do módulo [id_modulo] ativado/operando normalmente."
+    operation_room: escape
+
+  - code: "0x9920C"
+    description: "Energia interna do módulo [id_modulo] offline ou crítica. Baterias não carregando ou desconectadas."
+    operation_room: escape
+
+  - code: "0x9920F"
+    description: "Falha na ativação de energia do módulo. Link com sistema de distribuição de energia da nave (Sala 02) instável ou desativado para esta baía."
+    operation_room: escape
+
+  - code: "0x9921D"
+    description: "Sistema de suporte de vida do módulo [id_modulo] inativo."
+    operation_room: escape
+
+  - code: "0x9921E"
+    description: "Falha no suporte de vida do módulo. Cilindros de O2 perfurados, vazios ou válvulas de fluxo emperradas."
+    operation_room: escape
+
+  - code: "0x9922E"
+    description: "Sistema de navegação do módulo [id_modulo] descalibrado ou offline."
+    operation_room: escape
+
+  - code: "0x9922F"
+    description: "Calibração do NavComp do módulo falhou. Pacote de dados de alinhamento estelar (Sala 14 - Ref: ADI_NAV_CALIB_MF_X917) ausente ou corrompido."
+    operation_room: escape
+
+  - code: "0x99300"
+    description: "Escotilha interna do módulo [id_modulo] operando normalmente (fechada/aberta e travada/destravada conforme comando)."
+    operation_room: escape
+
+  - code: "0x9930A"
+    description: "Falha de pressão ou selo comprometido na escotilha externa do módulo [id_modulo]. Reparo necessário."
+    operation_room: escape
+
+  - code: "0x9930B"
+    description: "Mecanismo da escotilha interna do módulo [id_modulo] emperrado."
+    operation_room: escape
+
+  - code: "0x99400"
+    description: "Nível de combustível do módulo [id_modulo] ótimo (100%). Abastecimento concluído."
+    operation_room: escape
+
+  - code: "0x9940A"
+    description: "Nível de combustível do módulo [id_modulo] zero ou abaixo do mínimo para ignição."
+    operation_room: escape
+
+  - code: "0x9940B"
+    description: "Requisição de abastecimento enviada à Engenharia (Sala 05). Aguardando liberação da linha de combustível e confirmação de pressão."
+    operation_room: escape
+
+  - code: "0x9940C"
+    description: "Abastecimento de combustível em progresso para o módulo [id_modulo]: [XX]%."
+    operation_room: escape
+
+  - code: "0x9940D"
+    description: "Engenharia (Sala 05) reporta falha na bomba de combustível ou linha de suprimento interrompida. Abastecimento impossível. (Ref. Código Sala 05)."
+    operation_room: escape
+
+  - code: "0x99500"
+    description: "Módulo [id_modulo] autorizado pela Ponte (Sala 01) e pronto para iniciação da sequência final de lançamento."
+    operation_room: escape
+
+  - code: "0x9950A"
+    description: "Lançamento do módulo [id_modulo] não autorizado pela Ponte de Comando (Sala 01)."
+    operation_room: escape
+
+  - code: "0x9950B"
+    description: "Sequência de lançamento do módulo [id_modulo] abortada. Módulo não reporta prontidão total em todos os subsistemas (Verifique Painel CPM)."
+    operation_room: escape
+
+  - code: "0x9950C"
+    description: "Código de armar ejetores para módulo [id_modulo] inválido. Lançamento abortado."
+    operation_room: escape
+
+  - code: "0x9950D"
+    description: "Falha mecânica nos grampos de ejeção do módulo [id_modulo]. Lançamento fisicamente impedido. Requer intervenção da Engenharia (05)."
+    operation_room: escape
+
+  - code: "0x99600"
+    description: "Integridade estrutural do casco do módulo [id_modulo] verificada. Selo atmosférico OK."
+    operation_room: escape
+
+  - code: "0x99601"
+    description: "Integridade do casco do módulo [id_modulo] comprometida. Múltiplas microfissuras ou dano detectado. Reparos necessários."
+    operation_room: escape
+
+  - code: "0x99F01"
+    description: "Interface de controle da Sala 99 sobrecarregada. Comandos podem apresentar lentidão."
+    operation_room: escape
+
+  - code: "0x99F02"
+    description: "Falha de comunicação entre o terminal da Sala 99 e a UCP do módulo [id_modulo] selecionado."
+    operation_room: escape

@@ -1,0 +1,123 @@
+commands:
+  - name: "sdm"
+    operation: "listar_modulos"
+    arguments: []
+    syntax: "sdm listar_modulos"
+    description: "Exibe os identificadores (IDs) e um status resumido de todos os módulos de fuga detectados no sistema da baía."
+    messages:
+      success: "Módulos de Fuga disponíveis: MF-01 (Status: ERRO CRÍTICO), MF-02 (Status: INOPERÁVEL), MF-03 (Status: INOPERÁVEL). Código 0x99000."
+      failure: ""
+      log: ""
+
+  - name: "sdm"
+    operation: "selecionar_modulo"
+    arguments:
+      - "id_modulo"
+    syntax: "sdm selecionar_modulo [id_modulo]"
+    description: "Define o módulo de fuga alvo para todas as operações posteriores dos painéis CPM e CSL."
+    messages:
+      success: "Módulo [id_modulo] selecionado. Todos os comandos CPM e CSL agora se referem a [id_modulo]. Código 0x99000."
+      failure: "Erro. ID de módulo '[id_modulo]' inválido ou não existente na baía. Código 0x9900F."
+      log: ""
+
+  - name: "sdm"
+    operation: "diagnostico_rapido"
+    arguments:
+      - "id_modulo"
+    syntax: "sdm diagnostico_rapido [id_modulo]"
+    description: "Inicia uma varredura de diagnóstico superficial no módulo de fuga especificado para avaliação preliminar."
+    messages:
+      success: "Diagnóstico Rápido [id_modulo]: Múltiplas falhas críticas detectadas. Código 0x99101."
+      failure: ""
+      log: ""
+
+  - name: "cpm"
+    operation: "estado_detalhado"
+    arguments: []
+    syntax: "cpm estado_detalhado"
+    description: "Fornece um relatório completo e detalhado dos subsistemas monitorados do módulo de fuga atualmente selecionado."
+    messages:
+      success: "CPM ([id_modulo]): Status Detalhado: Energia: Offline (0x9920E), Casco: Danificado (0x99601), Escotilha: Aberta."
+      failure: ""
+      log: ""
+
+  - name: "cpm"
+    operation: "ativar_energia_modulo"
+    arguments: []
+    syntax: "cpm ativar_energia_modulo"
+    description: "Tenta ativar os sistemas de energia internos do módulo de fuga, utilizando reservas internas ou o link de alimentação da nave."
+    messages:
+      success: "CPM ([id_modulo]): Energia interna ativada. Baterias a [XX]% e carregando. Código 0x99200."
+      failure: "CPM ([id_modulo]): Falha na ativação. Barramento de energia interna da Sala 99 desativado. Verifique Sala de Energia (02). Código 0x9920F."
+      log: ""
+
+  - name: "cpm"
+    operation: "requisitar_combustivel"
+    arguments: []
+    syntax: "cpm requisitar_combustivel"
+    description: "Envia solicitação ao sistema de Engenharia para iniciar o abastecimento de propelente do módulo de fuga selecionado."
+    messages:
+      success: "CPM ([id_modulo]): Solicitação de abastecimento enviada à Engenharia (Sala 05). Código 0x9940B."
+      failure: "CPM ([id_modulo]): ALERTA: Engenharia (Sala 05) reporta falha na bomba de combustível. Código 0x9940D."
+      log: ""
+
+  - name: "cpm"
+    operation: "ativar_suporte_vida_modulo"
+    arguments: []
+    syntax: "cpm ativar_suporte_vida_modulo"
+    description: "Ativa os sistemas de suporte vital do módulo de fuga, incluindo regulação de ar, controle de temperatura e fornecimento de oxigênio."
+    messages:
+      success: "CPM ([id_modulo]): Suporte de vida ativado. Atmosfera interna se estabilizando. Níveis de O2 em [XX]%. Código 0x99200."
+      failure: "CPM ([id_modulo]): Falha crítica na ativação do suporte de vida. Cilindros de O2 perfurados. Código 0x9921E."
+      log: ""
+
+  - name: "cpm"
+    operation: "calibrar_navcomp_modulo"
+    arguments: []
+    syntax: "cpm calibrar_navcomp_modulo"
+    description: "Inicia rotina de calibração do NavComp do módulo de fuga, podendo requerer dados de alinhamento externos."
+    messages:
+      success: "CPM ([id_modulo]): NavComp calibrado e online. Código 0x99200."
+      failure: "CPM ([id_modulo]): Calibração falhou. Dados de alinhamento ausentes ou corrompidos. Código 0x9922F."
+      log: ""
+
+  - name: "cpm"
+    operation: "verificar_selos_escotilha"
+    arguments: []
+    syntax: "cpm verificar_selos_escotilha"
+    description: "Executa teste de pressão e integridade nos selos da escotilha interna e externa do módulo de fuga."
+    messages:
+      success: "CPM ([id_modulo]): Selos da escotilha interna e externa verificados. Integridade confirmada. Código 0x99300."
+      failure: "CPM ([id_modulo]): Teste falhou. Escotilha externa com fuga de pressão. Código 0x9930A."
+      log: ""
+
+  - name: "cpm"
+    operation: "fechar_travar_escotilha"
+    arguments: []
+    syntax: "cpm fechar_travar_escotilha"
+    description: "Comanda fechamento e travamento mecânico da escotilha do módulo de fuga."
+    messages:
+      success: "CPM ([id_modulo]): Escotilha interna fechada e travada. Código 0x99300."
+      failure: "CPM ([id_modulo]): Falha ao fechar escotilha interna. Código 0x9930B."
+      log: ""
+
+  - name: "csl"
+    operation: "status_prontidao"
+    arguments: []
+    syntax: "csl status_prontidao"
+    description: "Verifica status final de todos os sistemas do módulo selecionado e se a autorização de lançamento foi recebida."
+    messages:
+      success: "CSL ([id_modulo]): Autorização de lançamento da Ponte de Comando recebida. Pronto para ejeção. Código 0x99500."
+      failure: "CSL ([id_modulo]): Módulo NÃO PRONTO. Falhas críticas pendentes no CPM. Código 0x9950B."
+      log: ""
+
+  - name: "csl"
+    operation: "iniciar_lancamento"
+    arguments:
+      - "codigo_armar_ejetores"
+    syntax: "csl iniciar_lancamento [codigo_armar_ejetores]"
+    description: "Inicia contagem regressiva e ejeção do módulo de fuga, requer código de segurança para armar ejetores."
+    messages:
+      success: "CSL ([id_modulo]): Código de armar ejetores aceito. Sequência de ejeção iniciada... T-10, 9, 8..."
+      failure: "CSL ([id_modulo]): CÓDIGO DE ARMAR EJETORES INVÁLIDO. Lançamento abortado. Código 0x9950C."
+      log: ""

@@ -1,0 +1,194 @@
+commands:
+- name: dist_energia
+  operation: carregar_capacitores
+  arguments: []
+  description: Realiza carregar capacitores no módulo dist energia.
+  success_message: O comando 'carregar_capacitores' do módulo 'dist_energia' foi executado
+    com sucesso.
+  operation_room: energy
+  log_message: Comando 'carregar_capacitores' do módulo 'dist_energia' executado sem
+    argumentos.
+  requirements:
+  - general_authorization
+  - energy_stabilization
+- name: dist_energia
+  operation: estado
+  arguments: []
+  description: Verifica estado no módulo dist energia.
+  success_message: O comando 'estado' do módulo 'dist_energia' foi executado com sucesso.
+  operation_room: energy
+  log_message: Comando 'estado' do módulo 'dist_energia' executado sem argumentos.
+  requirements:
+  - general_authorization
+  - energy_stabilization
+- name: dist_energia
+  operation: reroutear
+  arguments:
+  - '[rede_origem]'
+  - '[rede_destino]'
+  description: Realiza reroutear no módulo dist energia. Recebe [rede_origem], [rede_destino]
+    como parâmetro.
+  success_message: O comando 'reroutear' do módulo 'dist_energia' foi executado com
+    sucesso com os parâmetros [rede_origem], [rede_destino].
+  operation_room: energy
+  log_message: 'Comando ''reroutear'' do módulo ''dist_energia'' executado com argumentos:
+    [rede_origem], [rede_destino].'
+  requirements:
+  - general_authorization
+  - energy_stabilization
+- name: gerador_aux
+  operation: ativar
+  arguments:
+  - '[numero_gerador]'
+  description: Ativa ativar no módulo gerador aux. Recebe [numero_gerador] como parâmetro.
+  success_message: O comando 'ativar' do módulo 'gerador_aux' foi executado com sucesso
+    com os parâmetros [numero_gerador].
+  operation_room: energy
+  log_message: 'Comando ''ativar'' do módulo ''gerador_aux'' executado com argumentos:
+    [numero_gerador].'
+  requirements:
+  - general_authorization
+  - energy_stabilization
+- name: gerador_aux
+  operation: estado
+  arguments: []
+  description: Verifica estado no módulo gerador aux.
+  success_message: O comando 'estado' do módulo 'gerador_aux' foi executado com sucesso.
+  operation_room: energy
+  log_message: Comando 'estado' do módulo 'gerador_aux' executado sem argumentos.
+  requirements:
+  - general_authorization
+  - energy_stabilization
+- name: gerador_aux
+  operation: verificar_combustivel
+  arguments: []
+  description: Verifica verificar combustivel no módulo gerador aux.
+  success_message: O comando 'verificar_combustivel' do módulo 'gerador_aux' foi executado
+    com sucesso.
+  operation_room: energy
+  log_message: Comando 'verificar_combustivel' do módulo 'gerador_aux' executado sem
+    argumentos.
+  requirements:
+  - general_authorization
+  - energy_stabilization
+- name: sgde
+  operation: carregar_capacitores_estabilizacao
+  arguments: []
+  description: Realiza carregar capacitores estabilizacao no módulo sgde.
+  success_message: O comando 'carregar_capacitores_estabilizacao' do módulo 'sgde'
+    foi executado com sucesso.
+  operation_room: energy
+  log_message: Comando 'carregar_capacitores_estabilizacao' do módulo 'sgde' executado
+    sem argumentos.
+  requirements:
+  - general_authorization
+  - energy_stabilization
+- name: sgde
+  operation: redirecionar_fluxo
+  arguments:
+  - '[disjuntor_origem]'
+  - '[disjuntor_destino]'
+  - '[prioridade]'
+  description: Realiza redirecionar fluxo no módulo sgde. Recebe [disjuntor_origem],
+    [disjuntor_destino], [prioridade] como parâmetro.
+  success_message: O comando 'redirecionar_fluxo' do módulo 'sgde' foi executado com
+    sucesso com os parâmetros [disjuntor_origem], [disjuntor_destino], [prioridade].
+  operation_room: energy
+  log_message: 'Comando ''redirecionar_fluxo'' do módulo ''sgde'' executado com argumentos:
+    [disjuntor_origem], [disjuntor_destino], [prioridade].'
+  requirements:
+  - general_authorization
+  - energy_stabilization
+- name: sgde
+  operation: redirecionar_fluxo
+  arguments:
+  - '[origem_id_disjuntor]'
+  - '[destino_id_disjuntor]'
+  - '[prioridade_1_a_5]'
+  description: Realiza redirecionar fluxo no módulo sgde. Recebe [origem_id_disjuntor],
+    [destino_id_disjuntor], [prioridade_1_a_5] como parâmetro.
+  success_message: O comando 'redirecionar_fluxo' do módulo 'sgde' foi executado com
+    sucesso com os parâmetros [origem_id_disjuntor], [destino_id_disjuntor], [prioridade_1_a_5].
+  operation_room: energy
+  log_message: 'Comando ''redirecionar_fluxo'' do módulo ''sgde'' executado com argumentos:
+    [origem_id_disjuntor], [destino_id_disjuntor], [prioridade_1_a_5].'
+  requirements:
+  - general_authorization
+  - energy_stabilization
+- name: sgde
+  operation: status_rede_principal
+  arguments: []
+  description: Realiza status rede principal no módulo sgde.
+  success_message: O comando 'status_rede_principal' do módulo 'sgde' foi executado
+    com sucesso.
+  operation_room: energy
+  log_message: Comando 'status_rede_principal' do módulo 'sgde' executado sem argumentos.
+  requirements:
+  - general_authorization
+  - energy_stabilization
+- name: uga
+  operation: ativar_unidade
+  arguments:
+  - '[id]'
+  - '[modo]'
+  description: Ativa ativar unidade no módulo uga. Recebe [id], [modo] como parâmetro.
+  success_message: O comando 'ativar_unidade' do módulo 'uga' foi executado com sucesso
+    com os parâmetros [id], [modo].
+  operation_room: energy
+  log_message: 'Comando ''ativar_unidade'' do módulo ''uga'' executado com argumentos:
+    [id], [modo].'
+  requirements:
+  - general_authorization
+  - energy_stabilization
+- name: uga
+  operation: ativar_unidade
+  arguments:
+  - '[id_unidade]'
+  - '[modo_operacao (emergencia/suporte)]'
+  description: Ativa ativar unidade no módulo uga. Recebe [id_unidade], [modo_operacao
+    (emergencia/suporte)] como parâmetro.
+  success_message: O comando 'ativar_unidade' do módulo 'uga' foi executado com sucesso
+    com os parâmetros [id_unidade], [modo_operacao (emergencia/suporte)].
+  operation_room: energy
+  log_message: 'Comando ''ativar_unidade'' do módulo ''uga'' executado com argumentos:
+    [id_unidade], [modo_operacao (emergencia/suporte)].'
+  requirements:
+  - general_authorization
+  - energy_stabilization
+- name: uga
+  operation: nivel_combustivel_h2m
+  arguments:
+  - '[id]'
+  description: Realiza nivel combustivel h2m no módulo uga. Recebe [id] como parâmetro.
+  success_message: O comando 'nivel_combustivel_h2m' do módulo 'uga' foi executado
+    com sucesso com os parâmetros [id].
+  operation_room: energy
+  log_message: 'Comando ''nivel_combustivel_h2m'' do módulo ''uga'' executado com
+    argumentos: [id].'
+  requirements:
+  - general_authorization
+  - energy_stabilization
+- name: uga
+  operation: nivel_combustivel_h2m
+  arguments:
+  - '[id_unidade]'
+  description: Realiza nivel combustivel h2m no módulo uga. Recebe [id_unidade (1
+    ou 2)] como parâmetro.
+  success_message: O comando 'nivel_combustivel_h2m' do módulo 'uga' foi executado
+    com sucesso com os parâmetros [id_unidade].
+  operation_room: energy
+  log_message: 'Comando ''nivel_combustivel_h2m'' do módulo ''uga'' executado com
+    argumentos: [id_unidade].'
+  requirements:
+  - general_authorization
+  - energy_stabilization
+- name: uga
+  operation: status_unidades
+  arguments: []
+  description: Realiza status unidades no módulo uga.
+  success_message: O comando 'status_unidades' do módulo 'uga' foi executado com sucesso.
+  operation_room: energy
+  log_message: Comando 'status_unidades' do módulo 'uga' executado sem argumentos.
+  requirements:
+  - general_authorization
+  - energy_stabilization

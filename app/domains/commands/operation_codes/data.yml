@@ -1,0 +1,80 @@
+operation_codes:
+  - code: "0x14001"
+    description: "Anomalia na indexação de dados. Pode haver atrasos na recuperação de arquivos."
+    operation_room: data
+
+  - code: "0x14002"
+    description: "Corrupção de arquivo detectada. Dados inacessíveis ou comprometidos. Iniciar procedimento de validação."
+    operation_room: data
+
+  - code: "0x14003"
+    description: "Setor de memória quântica degradado. Redundância em risco."
+    operation_room: data
+
+  - code: "0x1404A"
+    description: "Falha na sincronização de logs do motor. Dados de propulsão podem estar incompletos."
+    operation_room: data
+
+  - code: "0x14005"
+    description: "Sobrecarga no subsistema de criptografia. Possível tentativa de acesso não autorizado."
+    operation_room: data
+
+  - code: "0x14006"
+    description: "Erro de autenticação. Credenciais inválidas para o nível de acesso solicitado."
+    operation_room: data
+
+  - code: "0x14007"
+    description: "Perda de conexão com o banco de dados principal. Acesso a informações críticas interrompido."
+    operation_room: data
+
+  - code: "0x14008"
+    description: "Falha no módulo de redundância de dados. Dados vulneráveis a perda."
+    operation_room: data
+
+  - code: "0x14009"
+    description: "Erro no sistema de backup automático. Verifique o status dos backups recentes."
+    operation_room: data
+
+  - code: "0x1400A"
+    description: "Ataque de negação de serviço (DoS) detectado no servidor de dados. Mitigação em andamento."
+    operation_room: data
+
+  - code: "0x1400B"
+    description: "Temperatura interna da sala de dados acima do limite. Risco de falha de hardware."
+    operation_room: data
+
+  - code: "0x1400C"
+    description: "Flutuação de energia no módulo de armazenamento. Instabilidade de dados."
+    operation_room: data
+
+  - code: "0x1400D"
+    description: "Intrusão de malware detectada. Isolar imediatamente o subsistema afetado."
+    operation_room: data
+
+  - code: "0x1400E"
+    description: "Arquivo de sistema crítico removido ou modificado. Integridade comprometida."
+    operation_room: data
+
+  - code: "0x1400F"
+    description: "Fragmentação excessiva do disco holográfico. Desempenho de leitura/escrita degradado."
+    operation_room: data
+
+  - code: "0x14010"
+    description: "Auditoria de segurança de dados pendente. Recomenda-se verificação completa."
+    operation_room: data
+
+  - code: "0x14011"
+    description: "Aviso de capacidade de armazenamento. Espaço disponível abaixo do limite operacional."
+    operation_room: data
+
+  - code: "0x14012"
+    description: "Falha na interface de usuário do Painel de Gerenciamento de Documentação Técnica."
+    operation_room: data
+
+  - code: "0x14013"
+    description: "Conexão intermitente com o Painel de Histórico de Missões. Dados históricos podem estar desatualizados."
+    operation_room: data
+
+  - code: "0x14014"
+    description: "Acesso negado por política de segurança de dados. Nível de permissão insuficiente."
+    operation_room: data

@@ -1,0 +1,64 @@
+operation_codes:
+  - code: "0x15000"
+    description: "Sistema de Energia operando normalmente."
+    operation_room: tec
+
+  - code: "0x15001"
+    description: "Reator principal offline."
+    operation_room: tec
+
+  - code: "0x15002"
+    description: "Reservatório de combustível primário baixo."
+    operation_room: tec
+
+  - code: "0x15003"
+    description: "Distribuição de energia irregular na rede principal."
+    operation_room: tec
+
+  - code: "0x15004"
+    description: "Superaquecimento do núcleo do reator principal."
+    operation_room: tec
+
+  - code: "0x15005"
+    description: "Válvula de fluxo de combustível primário bloqueada."
+    operation_room: tec
+
+  - code: "0x15006"
+    description: "Gerador auxiliar desativado."
+    operation_room: tec
+
+  - code: "0x15007"
+    description: "Autenticação da Ponte de Comando pendente para alteração de estado do reator."
+    operation_room: tec
+
+  - code: "0x15008"
+    description: "Carga de capacitores da rede de distribuição insuficiente."
+    operation_room: tec
+
+  - code: "0x15009"
+    description: "Sensor de pressão do reator principal defeituoso."
+    operation_room: tec
+
+  - code: "0x15010"
+    description: "Sobrecarga detectada na rede de energia secundária."
+    operation_room: tec
+
+  - code: "0x15011"
+    description: "Módulo de isolamento do reator principal comprometido."
+    operation_room: tec
+
+  - code: "0x15012"
+    description: "Conexão de dados do painel de controle da Sala de Energia intermitente."
+    operation_room: tec
+
+  - code: "0x15013"
+    description: "Ciclo de resfriamento secundário do reator inoperante."
+    operation_room: tec
+
+  - code: "0x15014"
+    description: "Sistema de filtragem de partículas de combustível do reator falhou."
+    operation_room: tec
+
+  - code: "0x15015"
+    description: "Inversor de corrente da rede principal em estado crítico."
+    operation_room: tec

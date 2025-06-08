@@ -1,0 +1,118 @@
+commands:
+- name: lancamento_fuga
+  operation: abortar_lancamento
+  arguments: []
+  description: Realiza abortar lancamento no módulo lancamento fuga.
+  success_message: O comando 'abortar_lancamento' do módulo 'lancamento_fuga' foi
+    executado com sucesso.
+  operation_room: escape
+  log_message: Comando 'abortar_lancamento' do módulo 'lancamento_fuga' executado
+    sem argumentos.
+  requirements:
+  - general_authorization
+- name: lancamento_fuga
+  operation: estado_sequencia
+  arguments: []
+  description: Verifica estado sequencia no módulo lancamento fuga.
+  success_message: O comando 'estado_sequencia' do módulo 'lancamento_fuga' foi executado
+    com sucesso.
+  operation_room: escape
+  log_message: Comando 'estado_sequencia' do módulo 'lancamento_fuga' executado sem
+    argumentos.
+  requirements:
+  - general_authorization
+- name: lancamento_fuga
+  operation: iniciar_lancamento
+  arguments: []
+  description: Inicia iniciar lancamento no módulo lancamento fuga.
+  success_message: O comando 'iniciar_lancamento' do módulo 'lancamento_fuga' foi sem parametros.
+  operation_room: escape
+  log_message: 'Comando ''iniciar_lancamento'' do módulo ''lancamento_fuga'' executado sem argumentos.'
+  requirements:
+  - general_authorization
+  - energy_stabilization
+- name: lancamento_fuga
+  operation: liberar_acoplamento
+  arguments: []
+  description: Realiza liberar acoplamento no módulo lancamento fuga.
+  success_message: O comando 'liberar_acoplamento' do módulo 'lancamento_fuga' foi
+    executado com sucesso.
+  operation_room: escape
+  log_message: Comando 'liberar_acoplamento' do módulo 'lancamento_fuga' executado
+    sem argumentos.
+  requirements:
+  - general_authorization
+  - energy_stabilization
+- name: nav_controle_fuga
+  operation: calcular_trajetoria_reentrada
+  arguments: []
+  description: Realiza calcular trajetoria reentrada no módulo nav controle fuga.
+  success_message: O comando 'calcular_trajetoria_reentrada' do módulo 'nav_controle_fuga'
+    foi executado com sucesso.
+  operation_room: escape
+  log_message: Comando 'calcular_trajetoria_reentrada' do módulo 'nav_controle_fuga'
+    executado sem argumentos.
+  requirements:
+  - general_authorization
+  - energy_stabilization
+- name: nav_controle_fuga
+  operation: definir_curso_manual
+  arguments:
+  - '[coordenadas_xyz]'
+  description: Realiza definir curso manual no módulo nav controle fuga. Recebe [coordenadas_xyz]
+    como parâmetro.
+  success_message: O comando 'definir_curso_manual' do módulo 'nav_controle_fuga'
+    foi executado com sucesso com os parâmetros [coordenadas_xyz].
+  operation_room: escape
+  log_message: 'Comando ''definir_curso_manual'' do módulo ''nav_controle_fuga'' executado
+    com argumentos: [coordenadas_xyz].'
+  requirements:
+  - general_authorization
+  - energy_stabilization
+- name: nav_controle_fuga
+  operation: estado_navegacao
+  arguments: []
+  description: Verifica estado navegacao no módulo nav controle fuga.
+  success_message: O comando 'estado_navegacao' do módulo 'nav_controle_fuga' foi
+    executado com sucesso.
+  operation_room: escape
+  log_message: Comando 'estado_navegacao' do módulo 'nav_controle_fuga' executado
+    sem argumentos.
+  requirements:
+  - general_authorization
+  - energy_stabilization
+- name: sistemas_bordo_fuga
+  operation: ativar_beacon_emergencia
+  arguments: []
+  description: Ativa ativar beacon emergencia no módulo sistemas bordo fuga.
+  success_message: O comando 'ativar_beacon_emergencia' do módulo 'sistemas_bordo_fuga'
+    foi executado com sucesso.
+  operation_room: escape
+  log_message: Comando 'ativar_beacon_emergencia' do módulo 'sistemas_bordo_fuga'
+    executado sem argumentos.
+  requirements:
+  - general_authorization
+- name: sistemas_bordo_fuga
+  operation: estado_suporte_vital
+  arguments: []
+  description: Verifica estado suporte vital no módulo sistemas bordo fuga.
+  success_message: O comando 'estado_suporte_vital' do módulo 'sistemas_bordo_fuga'
+    foi executado com sucesso.
+  operation_room: escape
+  log_message: Comando 'estado_suporte_vital' do módulo 'sistemas_bordo_fuga' executado
+    sem argumentos.
+  requirements:
+  - general_authorization
+  - energy_stabilization
+- name: sistemas_bordo_fuga
+  operation: verificar_energia_celula
+  arguments: []
+  description: Verifica verificar energia celula no módulo sistemas bordo fuga.
+  success_message: O comando 'verificar_energia_celula' do módulo 'sistemas_bordo_fuga'
+    foi executado com sucesso.
+  operation_room: escape
+  log_message: Comando 'verificar_energia_celula' do módulo 'sistemas_bordo_fuga'
+    executado sem argumentos.
+  requirements:
+  - general_authorization
+  - energy_stabilization

@@ -1,0 +1,63 @@
+commands:
+  - name: "dist_energia"
+    operation: "estado"
+    arguments: []
+    syntax: "dist_energia estado"
+    description: "Retorna o estado da rede de distribuição."
+    messages:
+      success: ""
+      failure: ""
+      log: ""
+
+  - name: "dist_energia"
+    operation: "reroutear"
+    arguments:
+      - "rede_origem"
+      - "rede_destino"
+    syntax: "dist_energia reroutear [rede_origem] [rede_destino]"
+    description: "Tenta redirecionar energia entre redes."
+    messages:
+      success: ""
+      failure: ""
+      log: ""
+
+  - name: "dist_energia"
+    operation: "carregar_capacitores"
+    arguments: []
+    syntax: "dist_energia carregar_capacitores"
+    description: "Inicia o carregamento dos capacitores principais da rede."
+    messages:
+      success: ""
+      failure: ""
+      log: ""
+
+  - name: "gerador_aux"
+    operation: "estado"
+    arguments: []
+    syntax: "gerador_aux estado"
+    description: "Verifica o status dos geradores auxiliares."
+    messages:
+      success: ""
+      failure: ""
+      log: ""
+
+  - name: "gerador_aux"
+    operation: "ativar"
+    arguments:
+      - "numero_gerador"
+    syntax: "gerador_aux ativar [numero_gerador]"
+    description: "Tenta ativar um gerador auxiliar específico."
+    messages:
+      success: ""
+      failure: ""
+      log: ""
+
+  - name: "gerador_aux"
+    operation: "verificar_combustivel"
+    arguments: []
+    syntax: "gerador_aux verificar_combustivel"
+    description: "Retorna o nível de combustível dos geradores auxiliares."
+    messages:
+      success: ""
+      failure: ""
+      log: ""
