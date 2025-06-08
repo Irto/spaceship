@@ -1,1 +1,1 @@
-web: bin/rails server
+web: sudo bin/rails server -b 0.0.0.0 -p 3000
