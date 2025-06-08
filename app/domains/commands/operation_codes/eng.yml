@@ -1,0 +1,92 @@
+operation_codes:
+  - code: "0x00000"
+    description: "Operando normalmente."
+    operation_room: eng
+
+  - code: "0x05001"
+    description: "Falha crítica: Nível de refrigerante primário do núcleo abaixo de 10%. Risco de superaquecimento."
+    operation_room: eng
+
+  - code: "0x05002"
+    description: "Alerta: Temperatura do núcleo excedendo limite seguro (+15%)."
+    operation_room: eng
+
+  - code: "0x05003"
+    description: "Falha: Haste de controle (especificar ID) emperrada."
+    operation_room: eng
+
+  - code: "0x05004"
+    description: "Alerta: Radiação gama na sala de engenharia acima de 5 mSv/h."
+    operation_room: eng
+
+  - code: "0x0500F"
+    description: "Sequência de ativação do núcleo incorreta. Verifique pré-condições."
+    operation_room: eng
+
+  - code: "0x0510A"
+    description: "Pressão no injetor de plasma do propulsor principal (especificar ID) instável."
+    operation_room: eng
+
+  - code: "0x0510B"
+    description: "Temperatura da câmara de combustão do propulsor de manobra (especificar ID) elevada."
+    operation_room: eng
+
+  - code: "0x0511C"
+    description: "Alinhamento vetorial do propulsor (especificar ID) fora da tolerância."
+    operation_room: eng
+
+  - code: "0x0512D"
+    description: "Nível de combustível para propulsores abaixo de 20%."
+    operation_room: eng
+
+  - code: "0x05201"
+    description: "Nível de O2 na nave abaixo de 16%. Risco de hipóxia."
+    operation_room: eng
+
+  - code: "0x05202"
+    description: "Concentração de CO2 acima de 10000 ppm."
+    operation_room: eng
+
+  - code: "0x05203"
+    description: "Sistema de regeneração de água offline."
+    operation_room: eng
+
+  - code: "0x0521F"
+    description: "Sensor de pressão atmosférica (especificar localização) descalibrado."
+    operation_room: eng
+
+  - code: "0x0522A"
+    description: "Filtro de partículas do SVI requer substituição em 24 horas."
+    operation_room: eng
+
+  - code: "0x05300"
+    description: "Nível do tanque de Hélio-3 abaixo de 15%."
+    operation_room: eng
+
+  - code: "0x05301"
+    description: "Bomba de transferência de combustível (especificar ID) inoperante."
+    operation_room: eng
+
+  - code: "0x05310"
+    description: "Tensão no barramento principal instável. Flutuação >5%."
+    operation_room: eng
+
+  - code: "0x05315"
+    description: "Supercapacitor de buffer (especificar ID) com eficiência reduzida."
+    operation_room: eng
+
+  - code: "0x05320"
+    description: "Linha de combustível (especificar ID) obstruída ou com vazamento detectado."
+    operation_room: eng
+
+  - code: "0x05F01"
+    description: "Múltiplos sistemas reportando falhas interdependentes. Consultar log detalhado."
+    operation_room: eng
+
+  - code: "0x05F11"
+    description: "Consumo de energia excedendo capacidade de geração. Desligar sistemas não essenciais."
+    operation_room: eng
+
+  - code: "0x05FFF"
+    description: "Falha geral da Engenharia. Evacuação da seção recomendada. Protocolo de contenção Omega ativado."
+    operation_room: eng
