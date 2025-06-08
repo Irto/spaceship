@@ -27,7 +27,6 @@ module Commands
       rooms = [:bridge, :data, :energy, :eng, :tec, :escape]
 
       commands = rooms.flat_map do |room|
-        puts room
         commands = YAML.load_file(File.expand_path("definitions/#{room}_commands.yml", __dir__))['commands'].map do |command|
           Command.new(
             **command.symbolize_keys,
