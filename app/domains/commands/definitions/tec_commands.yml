@@ -1,111 +1,184 @@
 commands:
-  - name: "pcrf"
-    operation: "status_reator"
-    arguments: []
-    syntax: "pcrf status_reator"
-    description: "Solicita um relatório completo do estado atual do Reator de Fusão Principal, incluindo temperatura do núcleo, pressão, estado do confinamento magnético, nível de potência e quaisquer códigos de erro ativos."
-    messages:
-      success: "Status Reator: Online. Potência: 750GW. Temp. Núcleo: 150MK. Confinamento: Estável. Código 0x02000."
-      failure: "Status Reator: Offline. Último Erro Registrado: 0x02001. Verifique 'log_reator'."
-      log: ""
-
-  - name: "pcrf"
-    operation: "sequencia_ignicao"
-    arguments:
-      - "codigo_seguranca"
-    syntax: "pcrf sequencia_ignicao [codigo_seguranca]"
-    description: "Inicia a sequência automatizada de ignição do Reator de Fusão Principal. Requer um código de segurança de 6 dígitos obtido através de protocolo específico da Ponte de Comando. A sequência é irreversível após a Fase 2."
-    messages:
-      success: "Código de segurança aceito. Sequência de ignição (Fase 1/5 - Pré-aquecimento Magnético) iniciada. Monitorar 'pcrf status_reator'. Código 0x02000."
-      failure: "Código de segurança inválido ou expirado. Operação abortada. Código 0x02007."
-      log: ""
-
-  - name: "pcrf"
-    operation: "ajustar_potencia"
-    arguments:
-      - "nivel_GW"
-    syntax: "pcrf ajustar_potencia [nivel_GW]"
-    description: "Ajusta a potência de saída do reator para o nível especificado em Gigawatts (GW). Variação permitida: 150GW a 850GW."
-    messages:
-      success: "Solicitação de ajuste de potência para [nivel_GW]GW recebida. Rampa de potência iniciada. Tempo estimado: 120s. Código 0x02000."
-      failure: "Nível de potência solicitado ([nivel_GW]GW) fora dos limites operacionais (150-850GW). Comando rejeitado. Código 0x02000."
-      log: ""
-
-  - name: "pcrf"
-    operation: "desligamento_emergencia"
-    arguments:
-      - "codigo_autorizacao"
-    syntax: "pcrf desligamento_emergencia [codigo_autorizacao]"
-    description: "Inicia o procedimento SCRAM para desligamento de emergência imediato do reator. Requer código de autorização da Ponte de Comando."
-    messages:
-      success: "ALERTA MÁXIMO! Código de autorização SCRAM aceito. Desligamento de emergência iniciado. Todas as hastes de controle inseridas. Código 0x02000."
-      failure: "Código de autorização SCRAM inválido. Operação crítica abortada. Código 0x02007. CONSULTE A PONTE IMEDIATAMENTE."
-      log: ""
-
-  - name: "sgde"
-    operation: "status_rede_principal"
-    arguments: []
-    syntax: "sgde status_rede_principal"
-    description: "Exibe o status da rede de distribuição de energia primária, incluindo tensão, corrente total, frequência e status dos principais disjuntores e inversores."
-    messages:
-      success: "Rede Primária: Estável. Tensão: 128.0 kV. Corrente Total: 6.5 kA. Inversor INV-PRM-A: Online. Código 0x02000."
-      failure: ""
-      log: ""
-
-  - name: "sgde"
-    operation: "redirecionar_fluxo"
-    arguments:
-      - "origem_id_disjuntor"
-      - "destino_id_disjuntor"
-      - "prioridade"
-    syntax: "sgde redirecionar_fluxo [origem_id_disjuntor] [destino_id_disjuntor] [prioridade]"
-    description: "Reconfigura o fluxo de energia abrindo o disjuntor de origem e fechando o disjuntor de destino para alimentar uma rota alternativa. Prioridade (1=máxima,5=mínima) afeta alocação em caso de demanda conflitante."
-    messages:
-      success: "Roteamento de [origem] para [destino] (Prioridade [prioridade]) executado com sucesso. Fluxo estabilizado. Código 0x02000."
-      failure: "ID de disjuntor inválido ou não encontrado. Operação abortada."
-      log:
-        - "ALERTA: SGDE - Roteamento proposto resultaria em sobrecarga no destino (0x02010). Operação não executada."
-        - "Reconfiguração de fluxo requer autorização da Ponte (0x02007). Operação pendente."
-
-  - name: "sgde"
-    operation: "carregar_capacitores_estabilizacao"
-    arguments: []
-    syntax: "sgde carregar_capacitores_estabilizacao"
-    description: "Inicia o ciclo de carregamento dos bancos de capacitores principais para estabilização da rede de energia primária."
-    messages:
-      success: "Ciclo de carregamento dos capacitores de estabilização iniciado. Carga atual: [percentual]%. Tempo estimado para 100%: [tempo]. Código 0x02000."
-      failure: "Impossível carregar capacitores. Fonte de energia instável ou offline (0x02001)."
-      log: ""
-
-  - name: "uga"
-    operation: "status_unidades"
-    arguments: []
-    syntax: "uga status_unidades"
-    description: "Exibe o status de todas as Unidades Geradoras Auxiliares (UGA-1, UGA-2), incluindo estado, nível de combustível, potência de saída e horas de operação."
-    messages:
-      success: "Status Unidades: UGA-1 (Online,75MW,Comb:85%,1250h), UGA-2 (Offline,Standby,Comb:98%,350h). Código 0x02000."
-      failure: ""
-      log: ""
-
-  - name: "uga"
-    operation: "ativar_unidade"
-    arguments:
-      - "id_unidade"
-      - "modo_operacao"
-    syntax: "uga ativar_unidade [id_unidade] [modo_operacao]"
-    description: "Tenta ativar a UGA especificada (1 ou 2). O modo_operacao pode ser emergencia ou suporte."
-    messages:
-      success: "Unidade UGA-[id] iniciando sequência de ativação em modo [modo]. Tempo estimado para online: 45s."
-      failure: "ID de unidade inválido ou indisponível. Ativação abortada."
-      log: ""
-
-  - name: "uga"
-    operation: "nivel_combustivel_h2m"
-    arguments:
-      - "id_unidade"
-    syntax: "uga nivel_combustivel_h2m [id_unidade]"
-    description: "Verifica e reporta o nível de combustível (Hidrogênio Metálico) da UGA especificada."
-    messages:
-      success: "Nível de combustível H2 Metálico (UGA-[id]): [percentual]% (Autonomia Estimada: [horas]h). Código 0x02000."
-      failure: "Sensor de nível de combustível da UGA-[id] offline ou com defeito."
-      log: ""
+- name: pcrf
+  operation: status_reator
+  arguments: []
+  syntax: pcrf status_reator
+  description: Solicita um relatório completo do estado atual do Reator de Fusão Principal,
+    incluindo temperatura do núcleo, pressão, estado do confinamento magnético, nível
+    de potência e quaisquer códigos de erro ativos.
+  messages:
+    success: 'Status Reator: Online. Potência: 750GW. Temp. Núcleo: 150MK. Confinamento:
+      Estável. Código 0x02000.'
+    failure: 'Status Reator: Offline. Último Erro Registrado: 0x02001. Verifique ''log_reator''.'
+    log: ''
+  operation_room: tec
+  requirements:
+  - general_authorization
+  - energy_stabilization
+- name: pcrf
+  operation: sequencia_ignicao
+  arguments:
+  - codigo_seguranca
+  syntax: pcrf sequencia_ignicao [codigo_seguranca]
+  description: Inicia a sequência automatizada de ignição do Reator de Fusão Principal.
+    Requer um código de segurança de 6 dígitos obtido através de protocolo específico
+    da Ponte de Comando. A sequência é irreversível após a Fase 2.
+  messages:
+    success: Código de segurança aceito. Sequência de ignição (Fase 1/5 - Pré-aquecimento
+      Magnético) iniciada. Monitorar 'pcrf status_reator'. Código 0x02000.
+    failure: Código de segurança inválido ou expirado. Operação abortada. Código 0x02007.
+    log: ''
+  operation_room: tec
+  requirements:
+  - general_authorization
+  - energy_stabilization
+- name: pcrf
+  operation: ajustar_potencia
+  arguments:
+  - nivel_GW
+  syntax: pcrf ajustar_potencia [nivel_GW]
+  description: 'Ajusta a potência de saída do reator para o nível especificado em
+    Gigawatts (GW). Variação permitida: 150GW a 850GW.'
+  messages:
+    success: 'Solicitação de ajuste de potência para `[nivel_GW]`GW recebida. Rampa
+      de potência iniciada. Tempo estimado: 120s. Código 0x02000.'
+    failure: Nível de potência solicitado (`[nivel_GW]`GW) fora dos limites operacionais
+      (150-850GW). Comando rejeitado. Código 0x02000.
+    log: ''
+  operation_room: tec
+  requirements:
+  - general_authorization
+  - energy_stabilization
+- name: pcrf
+  operation: desligamento_emergencia
+  arguments:
+  - codigo_autorizacao
+  syntax: pcrf desligamento_emergencia [codigo_autorizacao]
+  description: Inicia o procedimento SCRAM para desligamento de emergência imediato
+    do reator. Requer código de autorização da Ponte de Comando.
+  messages:
+    success: ALERTA MÁXIMO! Código de autorização SCRAM aceito. Desligamento de emergência
+      iniciado. Todas as hastes de controle inseridas. Código 0x02000.
+    failure: Código de autorização SCRAM inválido. Operação crítica abortada. Código
+      0x02007. CONSULTE A PONTE IMEDIATAMENTE.
+    log: ''
+  operation_room: tec
+  requirements:
+  - general_authorization
+  - energy_stabilization
+- name: sgde
+  operation: status_rede_principal
+  arguments: []
+  syntax: sgde status_rede_principal
+  description: Exibe o status da rede de distribuição de energia primária, incluindo
+    tensão, corrente total, frequência e status dos principais disjuntores e inversores.
+  messages:
+    success: 'Rede Primária: Estável. Tensão: 128.0 kV. Corrente Total: 6.5 kA. Inversor
+      INV-PRM-A: Online. Código 0x02000.'
+    failure: ''
+    log: ''
+  operation_room: tec
+  requirements:
+  - general_authorization
+  - energy_stabilization
+- name: sgde
+  operation: redirecionar_fluxo
+  arguments:
+  - origem_id_disjuntor
+  - destino_id_disjuntor
+  - prioridade
+  syntax: sgde redirecionar_fluxo [origem_id_disjuntor] [destino_id_disjuntor] [prioridade]
+  description: Reconfigura o fluxo de energia abrindo o disjuntor de origem e fechando
+    o disjuntor de destino para alimentar uma rota alternativa. Prioridade (1=máxima,5=mínima)
+    afeta alocação em caso de demanda conflitante.
+  messages:
+    success: Roteamento de `[origem]` para `[destino]` (Prioridade `[prioridade]`)
+      executado com sucesso. Fluxo estabilizado. Código 0x02000.
+    failure: ID de disjuntor inválido ou não encontrado. Operação abortada.
+    log: '`sgde redirecionar_fluxo `[origem_id_disjuntor]` `[destino_id_disjuntor]`
+      `[prioridade]``: SGDE - Roteamento proposto resultaria em sobrecarga no destino
+      (0x02010). Operação não executada. Reconfiguração de fluxo requer autorização
+      da Ponte (0x02007). Operação pendente.'
+- name: sgde
+  operation: carregar_capacitores_estabilizacao
+  arguments: []
+  syntax: sgde carregar_capacitores_estabilizacao
+  description: Inicia o ciclo de carregamento dos bancos de capacitores principais
+    para estabilização da rede de energia primária.
+  messages:
+    success: 'Ciclo de carregamento dos capacitores de estabilização iniciado. Carga
+      atual: `[percentual]`%. Tempo estimado para 100%: `[tempo]`. Código 0x02000.'
+    failure: Impossível carregar capacitores. Fonte de energia instável ou offline
+      (0x02001).
+    log: ''
+  operation_room: tec
+  requirements:
+  - general_authorization
+  - energy_stabilization
+- name: uga
+  operation: status_unidades
+  arguments: []
+  syntax: uga status_unidades
+  description: Exibe o status de todas as Unidades Geradoras Auxiliares (UGA-1, UGA-2),
+    incluindo estado, nível de combustível, potência de saída e horas de operação.
+  messages:
+    success: 'Status Unidades: UGA-1 (Online,75MW,Comb:85%,1250h), UGA-2 (Offline,Standby,Comb:98%,350h).
+      Código 0x02000.'
+    failure: ''
+    log: ''
+  operation_room: tec
+  requirements:
+  - general_authorization
+  - energy_stabilization
+- name: uga
+  operation: ativar_unidade
+  arguments:
+  - id_unidade
+  - modo_operacao
+  syntax: uga ativar_unidade [id_unidade] [modo_operacao]
+  description: Tenta ativar a UGA especificada (1 ou 2). O modo_operacao pode ser
+    emergencia ou suporte.
+  messages:
+    success: 'Unidade UGA-`[id]` iniciando sequência de ativação em modo `[modo]`.
+      Tempo estimado para online: 45s.'
+    failure: ID de unidade inválido ou indisponível. Ativação abortada.
+    log: ''
+  operation_room: tec
+  requirements:
+  - general_authorization
+  - energy_stabilization
+- name: uga
+  operation: nivel_combustivel_h2m
+  arguments:
+  - id_unidade
+  syntax: uga nivel_combustivel_h2m [id_unidade]
+  description: Verifica e reporta o nível de combustível (Hidrogênio Metálico) da
+    UGA especificada.
+  messages:
+    success: 'Nível de combustível H2 Metálico (UGA-`[id]`): `[percentual]`% (Autonomia
+      Estimada: `[horas]`h). Código 0x02000.'
+    failure: Sensor de nível de combustível da UGA-`[id]` offline ou com defeito.
+    log: ''
+  operation_room: tec
+  requirements:
+  - general_authorization
+  - energy_stabilization
+- name: calibrar_sensores
+  operation: modular_frequencia_harmonica
+  arguments:
+  - identificador_do_alvo
+  - valor_numerico_base
+  syntax: calibrar_sensores modular_frequencia_harmonica [identificador_do_alvo] [valor_numerico_base]
+  description: 'Modula uma frequência harmônica específica para um sistema alvo (ex:
+    `SCG_RESSONANCIA`) com base em um valor de referência numérico, gerando uma Matriz
+    Harmônica de calibração.'
+  operation_room: tec
+  requirements:
+  - general_authorization
+  messages:
+    success: 'Modulação de frequência harmônica para `[identificador_do_alvo]`
+      com base `[valor_numerico_base]` em andamento... Matriz Harmônica Gerada: `MH-9B7C1D3A`.
+      Transmitir para unidade solicitante. Código `0x02000`.'
+    failure: 'ERRO: Valor base inválido ou ID alvo não reconhecido
+      para modulação harmônica. Código `0x02036` (`Falha na geração de Matriz Harmônica`).'
+    log: ''

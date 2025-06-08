@@ -13,6 +13,7 @@ Rails.application.routes.draw do
 
   namespace :commands do
     resource :execution, only: [:create]
+    resources :calibration, only: [:index]
   end
 
   namespace :terminal do

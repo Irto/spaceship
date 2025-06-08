@@ -1,66 +1,94 @@
 commands:
-  - name: "listar_arquivos"
-    operation: ""
-    arguments:
-      - "caminho"
-    syntax: "listar_arquivos <caminho>"
-    description: "Exibe uma lista dos arquivos e diretórios presentes no caminho especificado. Se nenhum caminho for fornecido, lista o conteúdo do diretório raiz."
-    messages:
-      success: "Comando executado. Conteúdo de <caminho>: [lista de arquivos]."
-      failure: "Erro: Caminho inválido. Verifique a sintaxe e o diretório."
-      log: ""
-
-  - name: "abrir_arquivo"
-    operation: ""
-    arguments:
-      - "caminho_completo_do_arquivo"
-    syntax: "abrir_arquivo <caminho_completo_do_arquivo>"
-    description: "Carrega e exibe o conteúdo do arquivo especificado. A exibição pode variar dependendo do tipo de arquivo."
-    messages:
-      success: "Arquivo carregado: "<arquivo>". Exibindo conteúdo..."
-      failure: "Erro: Arquivo não encontrado ou formato inválido."
-      log: ""
-
-  - name: "buscar_dados"
-    operation: ""
-    arguments:
-      - "termo_chave"
-      - "diretorio_pesquisa"
-    syntax: "buscar_dados <termo_chave> <diretorio_pesquisa>"
-    description: "Realiza uma pesquisa por <termo_chave> dentro dos arquivos localizados no <diretorio_pesquisa>, retornando arquivos e trechos relevantes."
-    messages:
-      success: "Busca concluída. Resultados para "<termo_chave>": [lista de resultados]."
-      failure: "Nenhum resultado encontrado para o termo de busca."
-      log: ""
-
-  - name: "auditar_integridade"
-    operation: ""
-    arguments:
-      - "caminho_do_sistema"
-    syntax: "auditar_integridade <caminho_do_sistema>"
-    description: "Inicia uma verificação de integridade dos arquivos no <caminho_do_sistema> especificado, comparando hashes e metadados."
-    messages:
-      success: "Auditoria concluída. 98% dos arquivos verificados. Anomalias detectadas em 3 arquivos."
-      failure: "Erro: Auditoria falhou. Permissões insuficientes ou sistema de destino indisponível."
-      log: ""
-
-  - name: "decodificar_acesso"
-    operation: ""
-    arguments:
-      - "código_cifrado"
-    syntax: "decodificar_acesso <código_cifrado>"
-    description: "Tenta decodificar um código de acesso cifrado, que pode representar uma senha, uma sequência de comandos ou uma coordenada."
-    messages:
-      success: "Decodificação bem-sucedida. Chave de acesso: "<chave>"."
-      failure: "Falha na decodificação. Código de acesso inválido ou algoritmo de criptografia desconhecido."
-      log: ""
-
-  - name: "verificar_log_seguranca"
-    operation: ""
-    arguments: []
-    syntax: "verificar_log_seguranca"
-    description: "Exibe os registros recentes de tentativas de segurança detectadas nos Painéis de Operações da SDA-14."
-    messages:
-      success: "Exibindo logs de segurança recentes: [logs]."
-      failure: "Nenhum evento de segurança registrado nas últimas 24 horas."
-      log: ""
+- name: listar_arquivos
+  operation: ''
+  arguments:
+  - caminho
+  syntax: listar_arquivos <caminho>
+  description: Exibe uma lista dos arquivos e diretórios presentes no caminho especificado.
+    Se nenhum caminho for fornecido, lista o conteúdo do diretório raiz.
+  messages:
+    success: 'Comando executado. Conteúdo de `<caminho>`: `[lista de arquivos]`.'
+    failure: 'Erro: Caminho inválido. Verifique a sintaxe e o diretório.'
+    log: ''
+  operation_room: data
+  requirements:
+  - general_authorization
+  - energy_stabilization
+- name: abrir_arquivo
+  operation: ''
+  arguments:
+  - caminho_completo_do_arquivo
+  syntax: abrir_arquivo <caminho_completo_do_arquivo>
+  description: Carrega e exibe o conteúdo do arquivo especificado. A exibição pode
+    variar dependendo do tipo de arquivo.
+  messages:
+    success: 'Arquivo carregado: ``<arquivo>``. Exibindo conteúdo...'
+    failure: 'Erro: Arquivo não encontrado ou formato inválido.'
+    log: ''
+  operation_room: data
+  requirements:
+  - general_authorization
+  - energy_stabilization
+- name: buscar_dados
+  operation: ''
+  arguments:
+  - termo_chave
+  - diretorio_pesquisa
+  syntax: buscar_dados <termo_chave> <diretorio_pesquisa>
+  description: Realiza uma pesquisa por <termo_chave> dentro dos arquivos localizados
+    no <diretorio_pesquisa>, retornando arquivos e trechos relevantes.
+  messages:
+    success: 'Busca concluída. Resultados para ``<termo_chave>``: `[lista de resultados]`.'
+    failure: Nenhum resultado encontrado para o termo de busca.
+    log: ''
+  operation_room: data
+  requirements:
+  - general_authorization
+  - energy_stabilization
+- name: auditar_integridade
+  operation: ''
+  arguments:
+  - caminho_do_sistema
+  syntax: auditar_integridade <caminho_do_sistema>
+  description: Inicia uma verificação de integridade dos arquivos no <caminho_do_sistema>
+    especificado, comparando hashes e metadados.
+  messages:
+    success: Auditoria concluída. 98% dos arquivos verificados. Anomalias detectadas
+      em 3 arquivos.
+    failure: 'Erro: Auditoria falhou. Permissões insuficientes ou sistema de destino
+      indisponível.'
+    log: ''
+  operation_room: data
+  requirements:
+  - general_authorization
+  - energy_stabilization
+- name: decodificar_acesso
+  operation: ''
+  arguments:
+  - código_cifrado
+  syntax: decodificar_acesso <código_cifrado>
+  description: Tenta decodificar um código de acesso cifrado, que pode representar
+    uma senha, uma sequência de comandos ou uma coordenada.
+  messages:
+    success: 'Decodificação bem-sucedida. Chave de acesso: ``<chave>``.'
+    failure: Falha na decodificação. Código de acesso inválido ou algoritmo de criptografia
+      desconhecido.
+    log: ''
+  operation_room: data
+  requirements:
+  - general_authorization
+  - energy_stabilization
+- name: verificar_log_seguranca
+  operation: ''
+  arguments: []
+  syntax: verificar_log_seguranca
+  description: Exibe os registros recentes de tentativas de segurança detectadas nos
+    Painéis de Operações da SDA-14.
+  messages:
+    success: 'Exibindo logs de segurança recentes: `[logs]`.'
+    failure: Nenhum evento de segurança registrado nas últimas 24 horas.
+    log: ''
+  operation_room: data
+  requirements:
+  - general_authorization
+  - energy_stabilization

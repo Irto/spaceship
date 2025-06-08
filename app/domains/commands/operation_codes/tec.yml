@@ -62,3 +62,12 @@ operation_codes:
   - code: "0x15015"
     description: "Inversor de corrente da rede principal em estado crítico."
     operation_room: tec
+
+  - code: "0x150A8"
+    description: "Calibragem negada, valor está fora dos padrões de segurança"
+    operation_room: tec
+
+  - code: "0x150A9"
+    description: "Calibragem dos sensores impossível, identificador alvo é desconhecidor"
+    operation_room: tec
+

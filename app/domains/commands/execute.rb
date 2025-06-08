@@ -4,12 +4,16 @@ module Commands
     include ::Singleton
     include ::Commands::Concerns::Haltable
 
-    ExecutionResult = Struct.new(:status, :message, keyword_init: true)
+    ExecutionResult = Struct.new(:status, :message, :continue_url, keyword_init: true)
 
     class CommandInvalid < StandardError; end
 
     COMMANDS_WITH_BEHAVIOUR = {
-      'pap autenticar' => ::Commands::PapAuthorize.instance
+      'pap autenticar' => ::Commands::PapAuthorize.instance,
+      'calibrar_sensores modular_frequencia_harmonica' => ::Commands::SensorCalibration.instance,
+      'reator_principal estado' => ::Commands::ReactorStatus.instance,
+      'ponte autorizar' => ::Commands::Authorize.instance,
+      'nuclear calibrar_hastes' => ::Commands::RodsCalibration.instance,
     }
 
     def call(session, name, operation, arguments)
@@ -28,7 +32,7 @@ module Commands
 
         behaviour&.call(session, arguments)
 
-        ExecutionResult.new(status: 'finished', message: command.success_message)
+        ExecutionResult.new(status: 'finished', message: command.messages.success)
       end
     end
 
@@ -49,7 +53,7 @@ module Commands
     def halt_error_for(requirement)
       case(requirement)
       when GameParameter::GENERAL_AUTHORIZATION then halt(status: 'error', message: "SISTEMA BLOQUEADO, OPERADOR NECESSÁRIO")
-      when GameParameter::ENERGY_STABILIZATION then halt(status: 'error', message: "SISTEMA BLOQUEADO, OPERADOR NECESSÁRIO")
+      when GameParameter::ENERGY_STABILIZATION then halt(status: 'error', message: "Impossível executar comando, sistema funcionando em nível crítico. (FALHA CRÍTICA: Flutuação de energia induzida por ressonância gravitacional externa (Ref: Alerta Engenharia ARG-05-01). Compensação da Engenharia (05) ineficaz. Reator Principal operando em código 0x01020).")
       end
     end
 

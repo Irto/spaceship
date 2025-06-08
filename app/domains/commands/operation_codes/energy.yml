@@ -62,3 +62,11 @@ operation_codes:
   - code: "0x02015"
     description: "Inversor de corrente da rede principal em estado crítico."
     operation_room: energy
+
+  - code: "0x02020"
+    description: "FALHA CRÍTICA: Flutuação de energia induzida por ressonância gravitacional externa (Ref: Alerta Engenharia ARG-05-01). Compensação da Engenharia (05) ineficaz."
+    operation_room: energy
+
+  - code: "0x01020"
+    description: "Flutuação de energia induzida por ressonância gravitacional externa."
+    operation_room: energy

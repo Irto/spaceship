@@ -1,73 +1,101 @@
 commands:
-  - name: "nuclear"
-    operation: "estado"
-    arguments: []
-    syntax: "nuclear estado"
-    description: "Retorna a situação operacional atual do núcleo de fissão nuclear, incluindo nível de potência, estado das hastes de controle e fluxo de refrigerante."
-    messages:
-      success: "Núcleo de fissão nuclear operando em código de potência: 75%. Temp: 850K. Haste Ctrl: 60% inserida. Refrig.: Nominal."
-      failure: "Comando inválido. Erro 0x05002: Temperatura do núcleo excedendo limite seguro (+15%)."
-      log: "nuclear estado executado por [USUARIO] em [TIMESTAMP]."
-
-  - name: "nuclear"
-    operation: "ativar"
-    arguments:
-      - "CODIGO_AUTORIZACAO"
-    syntax: "nuclear ativar [CODIGO_AUTORIZACAO]"
-    description: "Inicia a sequência de ativação do núcleo de fissão. Requer um código de autorização da Ponte (formato XXX-XXX)."
-    messages:
-      success: "Núcleo de fissão ativado e estável. Potência subindo para 20% nominal."
-      failure: "Código de autorização inválido ou expirado."
-      log: "nuclear ativar [CODIGO_AUTORIZACAO] executado por [USUARIO] em [TIMESTAMP]."
-
-  - name: "nuclear"
-    operation: "desativar"
-    arguments:
-      - "CODIGO_SEGURANCA"
-    syntax: "nuclear desativar [CODIGO_SEGURANCA]"
-    description: "Inicia a sequência de desligamento controlado do núcleo de fissão. Requer um código de segurança da Engenharia-Chefe."
-    messages:
-      success: "Núcleo de fissão desativado com segurança. Temperatura em redução controlada."
-      failure: "Código de segurança inválido."
-      log: "nuclear desativar [CODIGO_SEGURANCA] executado por [USUARIO] em [TIMESTAMP]."
-
-  - name: "nuclear"
-    operation: "calibrar_hastes"
-    arguments: []
-    syntax: "nuclear calibrar hastes"
-    description: "Executa a rotina de calibração das hastes de controle, desde que o núcleo esteja em modo de baixa potência (standby) ou desligado."
-    messages:
-      success: "Calibração das hastes de controle concluída. Precisão dentro de 0.01mm."
-      failure: "Núcleo em estado de alta potência. Calibração não permitida."
-      log: "nuclear calibrar hastes executado por [USUARIO] em [TIMESTAMP]."
-
-  - name: "nuclear"
-    operation: "ajustar_potencia"
-    arguments:
-      - "PERCENTUAL"
-    syntax: "nuclear ajustar_potencia [PERCENTUAL]"
-    description: "Ajusta a potência de saída do núcleo de fissão para o percentual nominal especificado (0-100%)."
-    messages:
-      success: "Potência do núcleo ajustada para [PERCENTUAL]%. Estável."
-      failure: "Percentual [PERCENTUAL]% fora da faixa permitida (requer autorização Nível 5 para >90%)."
-      log: "nuclear ajustar_potencia [PERCENTUAL] executado por [USUARIO] em [TIMESTAMP]."
-
-  - name: "nuclear"
-    operation: "status_refrigeracao"
-    arguments: []
-    syntax: "nuclear status_refrigeracao"
-    description: "Detalha o estado dos sistemas de refrigeração primária (Hélio Líquido) e secundária (Água Pesada) do núcleo."
-    messages:
-      success: "Refrigeração Primária (LHe): Fluxo 98%, Temperatura Entrada 300K, Temperatura Saída 550K. Refrigeração Secundária (D2O): Fluxo 100%."
-      failure: ""
-      log: "nuclear status_refrigeracao executado por [USUARIO] em [TIMESTAMP]."
-
-  - name: "nuclear"
-    operation: "diagnostico_sensores_nucleo"
-    arguments: []
-    syntax: "nuclear diagnostico_sensores_nucleo"
-    description: "Executa uma varredura de diagnóstico nos sensores do núcleo, incluindo temperatura, pressão, fluxo de nêutrons e níveis de radiação."
-    messages:
-      success: "Diagnóstico concluído. Todos os sensores operando dentro dos parâmetros. 237 sensores verificados."
-      failure: "Diagnóstico falhou. Sensor de fluxo de nêutrons NF-SENS-C03 não responsivo."
-      log: "nuclear diagnostico_sensores_nucleo executado por [USUARIO] em [TIMESTAMP]."
+- name: nuclear
+  operation: estado
+  arguments: []
+  syntax: nuclear estado
+  description: Retorna a situação operacional atual do núcleo de fissão nuclear, incluindo
+    nível de potência, estado das hastes de controle e fluxo de refrigerante.
+  messages:
+    success: 'Núcleo de fissão nuclear operando em código de potência: 75%. Temp:
+      850K. Haste Ctrl: 60% inserida. Refrig.: Nominal.'
+    failure: 'Comando inválido. Erro 0x05002: Temperatura do núcleo excedendo limite
+      seguro (+15%).'
+    log: Comando 'estado' do módulo 'nuclear' executado sem argumentos.
+  operation_room: eng
+  requirements:
+  - general_authorization
+- name: nuclear
+  operation: ativar
+  arguments:
+  - CODIGO_AUTORIZACAO
+  syntax: nuclear ativar [CODIGO_AUTORIZACAO]
+  description: Inicia a sequência de ativação do núcleo de fissão. Requer um código
+    de autorização da Ponte (formato XXX-XXX).
+  messages:
+    success: Núcleo de fissão ativado e estável. Potência subindo para 20% nominal.
+    failure: Código de autorização inválido ou expirado.
+    log: 'Comando ''ativar'' do módulo ''nuclear'' executado com argumentos: `[CODIGO_AUTORIZACAO]`.'
+  operation_room: eng
+  requirements:
+  - general_authorization
+- name: nuclear
+  operation: desativar
+  arguments:
+  - CODIGO_SEGURANCA
+  syntax: nuclear desativar [CODIGO_SEGURANCA]
+  description: Inicia a sequência de desligamento controlado do núcleo de fissão.
+    Requer um código de segurança da Engenharia-Chefe.
+  messages:
+    success: Núcleo de fissão desativado com segurança. Temperatura em redução controlada.
+    failure: Código de segurança inválido.
+    log: 'Comando ''desativar'' do módulo ''nuclear'' executado com argumentos: `[CODIGO_SEGURANCA]`.'
+  operation_room: eng
+  requirements:
+  - general_authorization
+- name: nuclear
+  operation: calibrar_hastes
+  arguments: []
+  syntax: nuclear calibrar_hastes
+  description: Executa a rotina de calibração das hastes de controle, desde que o
+    núcleo esteja em modo de baixa potência (standby) ou desligado.
+  messages:
+    success: Calibração das hastes de controle concluída. Precisão dentro de 0.01mm.
+    failure: Núcleo em estado de alta potência. Calibração não permitida.
+    log: nuclear calibrar hastes executado por `[USUARIO]` em `[TIMESTAMP]`.
+  operation_room: eng
+  requirements:
+  - general_authorization
+- name: nuclear
+  operation: ajustar_potencia
+  arguments:
+  - PERCENTUAL
+  syntax: nuclear ajustar_potencia [PERCENTUAL]
+  description: Ajusta a potência de saída do núcleo de fissão para o percentual nominal
+    especificado (0-100%).
+  messages:
+    success: Potência do núcleo ajustada para `[PERCENTUAL]`%. Estável.
+    failure: Percentual `[PERCENTUAL]`% fora da faixa permitida (requer autorização
+      Nível 5 para >90%).
+    log: 'Comando ''ajustar_potencia'' do módulo ''nuclear'' executado com argumentos:
+      `[PERCENTUAL]`.'
+  operation_room: eng
+  requirements:
+  - general_authorization
+- name: nuclear
+  operation: status_refrigeracao
+  arguments: []
+  syntax: nuclear status_refrigeracao
+  description: Detalha o estado dos sistemas de refrigeração primária (Hélio Líquido)
+    e secundária (Água Pesada) do núcleo.
+  messages:
+    success: 'Refrigeração Primária (LHe): Fluxo 98%, Temperatura Entrada 300K, Temperatura
+      Saída 550K. Refrigeração Secundária (D2O): Fluxo 100%.'
+    failure: ''
+    log: Comando 'status_refrigeracao' do módulo 'nuclear' executado sem argumentos.
+  operation_room: eng
+  requirements:
+  - general_authorization
+- name: nuclear
+  operation: diagnostico_sensores_nucleo
+  arguments: []
+  syntax: nuclear diagnostico_sensores_nucleo
+  description: Executa uma varredura de diagnóstico nos sensores do núcleo, incluindo
+    temperatura, pressão, fluxo de nêutrons e níveis de radiação.
+  messages:
+    success: Diagnóstico concluído. Todos os sensores operando dentro dos parâmetros.
+      237 sensores verificados.
+    failure: Diagnóstico falhou. Sensor de fluxo de nêutrons NF-SENS-C03 não responsivo.
+    log: Comando 'diagnostico_sensores_nucleo' do módulo 'nuclear' executado sem argumentos.
+  operation_room: eng
+  requirements:
+  - general_authorization

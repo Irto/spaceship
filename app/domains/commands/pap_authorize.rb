@@ -13,9 +13,5 @@ module Commands
       halt(status: 'finished', message: 'Código **CV-917-ORION-7** aceito. Bem-vindo, `Copiloto Júnior`. Acesso Nível 2 concedido. Paineis operacionais liberados. Código `0x01300``.')
     end
 
-    def overpass?(parameter)
-      true
-    end
-
   end
 end

@@ -1,83 +1,126 @@
 commands:
-  - name: "pnp"
-    operation: "estado"
-    arguments: []
-    syntax: "pnp estado"
-    description: "Consulta e exibe o status geral do sistema de navegação primário."
-    messages:
-      success: "Status Crítico. Código 0x01101 (Falha crítica no sistema de navegação primário. Nave em órbita decadente)."
-      failure: ""
-      log: ""
-
-  - name: "pnp"
-    operation: "rota_atual"
-    arguments: []
-    syntax: "pnp rota_atual"
-    description: "Exibe informações detalhadas sobre a trajetória de voo corrente da nave."
-    messages:
-      success: "Rota atual: Trajetória de interceptação com a alta atmosfera de Urano. Tempo estimado para ponto de não retorno: [YY:MM:SS]."
-      failure: ""
-      log: ""
-
-  - name: "pco"
-    operation: "estado"
-    arguments: []
-    syntax: "pco estado"
-    description: "Verificar e reportar o estado operacional dos sistemas de comunicação."
-    messages:
-      success: "Status Operacional. Sistemas internos ativos. Sistemas externos sofrendo interferência. Código 0x01200."
-      failure: "Status Offline. Código 0x01230 (Sistema de Comunicações offline: Falha de alimentação de energia primária)."
-      log: ""
-
-  - name: "pco"
-    operation: "buscar_naves_proximas"
-    arguments: []
-    syntax: "pco buscar_naves_proximas"
-    description: "Inicia uma varredura por sinais de outras espaçonaves nas proximidades."
-    messages:
-      success: "Busca de naves falhou. Código 0x01250 (Interferência massiva pela magnetosfera de Urano)."
-      failure: "Impossível executar busca. Código 0x01230."
-      log: ""
-
-  - name: "pap"
-    operation: "estado"
-    arguments: []
-    syntax: "pap estado"
-    description: "Exibe o status atual do módulo de autorizações."
-    messages:
-      success: "Módulo de autorização operacional. Aguardando comandos de protocolo ou autenticação. Código 0x01300."
-      failure: ""
-      log: ""
-
-  - name: "pap"
-    operation: "liberar_modulo_fuga"
-    arguments:
-      - "id_modulo"
-      - "codigo_acesso_capitao"
-    syntax: "pap liberar_modulo_fuga [id_modulo] [codigo_acesso_capitao]"
-    description: "Tenta autorizar a liberação de um Módulo de Fuga, requerindo ID do módulo e código de nível Capitão."
-    messages:
-      success: "Autorização Final para Módulo de Fuga [id_modulo] concedida. Código 0x01300."
-      failure: "Código 0x01355 (Autorização concedida, mas Módulo [id_modulo] reporta indisponibilidade. Verifique Sala 99)."
-      log: ""
-
-  - name: "pap"
-    operation: "autenticar"
-    arguments:
-      - "codigo_pessoal"
-    syntax: "pap autenticar [codigo_pessoal]"
-    description: "Autentica um membro da tripulação no terminal; é o primeiro comando necessário para operar um terminal bloqueado."
-    messages:
-      success: ""
-      failure: ""
-      log: ""
-
-  - name: "pcd"
-    operation: "exibir_log_emergencia"
-    arguments: []
-    syntax: "pcd exibir_log_emergencia"
-    description: "Exibe o último log de evento crítico ou mensagem de emergência. É o comando essencial para entender a situação inicial da nave."
-    messages:
-      success: ""
-      failure: ""
-      log: ""
+- name: pnp
+  operation: estado
+  arguments: []
+  syntax: pnp estado
+  description: Consulta e exibe o status geral do sistema de navegação primário.
+  messages:
+    success: Status Crítico. Código 0x01101 (Falha crítica no sistema de navegação
+      primário. Nave em órbita decadente).
+    failure: ''
+    log: Comando `estado` do módulo `pnp` executado sem argumentos.
+  operation_room: bridge
+  requirements:
+  - general_authorization
+- name: pnp
+  operation: rota_atual
+  arguments: []
+  syntax: pnp rota_atual
+  description: Exibe informações detalhadas sobre a trajetória de voo corrente da
+    nave.
+  messages:
+    success: 'Rota atual: Trajetória de interceptação com a alta atmosfera de Urano.
+      Tempo estimado para ponto de não retorno: `[YY:MM:SS]`.'
+    failure: ''
+    log: Comando `rota_atual` do módulo `pnp` executado sem argumentos.
+  operation_room: bridge
+  requirements:
+  - general_authorization
+- name: pco
+  operation: estado
+  arguments: []
+  syntax: pco estado
+  description: Verificar e reportar o estado operacional dos sistemas de comunicação.
+  messages:
+    success: Status Operacional. Sistemas internos ativos. Sistemas externos sofrendo
+      interferência. Código 0x01200.
+    failure: 'Status Offline. Código 0x01230 (Sistema de Comunicações offline: Falha
+      de alimentação de energia primária).'
+    log: Comando `estado` do módulo `pco` executado sem argumentos.
+  operation_room: bridge
+  requirements:
+  - general_authorization
+- name: pco
+  operation: buscar_naves_proximas
+  arguments: []
+  syntax: pco buscar_naves_proximas
+  description: Inicia uma varredura por sinais de outras espaçonaves nas proximidades.
+  messages:
+    success: Busca de naves falhou. Código 0x01250 (Interferência massiva pela magnetosfera
+      de Urano).
+    failure: Impossível executar busca. Código 0x01230.
+    log: Comando `buscar_naves_proximas` do módulo `pco` executado sem argumentos.
+  operation_room: bridge
+  requirements:
+  - general_authorization
+- name: pap
+  operation: estado
+  arguments: []
+  syntax: pap estado
+  description: Exibe o status atual do módulo de autorizações.
+  messages:
+    success: Módulo de autorização operacional. Aguardando comandos de protocolo ou
+      autenticação. Código 0x01300.
+    failure: ''
+    log: Comando `estado` do módulo `pap` executado sem argumentos.
+  operation_room: bridge
+  requirements: []
+- name: pap
+  operation: liberar_modulo_fuga
+  arguments:
+  - id_modulo
+  - codigo_acesso_capitao
+  syntax: pap liberar_modulo_fuga [id_modulo] [codigo_acesso_capitao]
+  description: Tenta autorizar a liberação de um Módulo de Fuga, requerindo ID do
+    módulo e código de nível Capitão.
+  messages:
+    success: Autorização Final para Módulo de Fuga `[id_modulo]` concedida. Código
+      0x01300.
+    failure: Código 0x01355 (Autorização concedida, mas Módulo `[id_modulo]` reporta
+      indisponibilidade. Verifique Sala 99).
+    log: 'Comando `liberar_modulo_fuga` do módulo `pap` executado com argumentos:
+      `[id_modulo]`, `[codigo_acesso_capitao]`.'
+  operation_room: bridge
+  requirements:
+  - general_authorization
+- name: pap
+  operation: autenticar
+  arguments:
+  - codigo_pessoal
+  syntax: pap autenticar [codigo_pessoal]
+  description: Autentica um membro da tripulação no terminal; é o primeiro comando
+    necessário para operar um terminal bloqueado.
+  messages:
+    success: O comando 'autenticar' do módulo 'pap' foi executado com sucesso.
+    failure: ''
+    log: 'Comando `autenticar` do módulo `pap` executado com argumentos: `[codigo_pessoal]`.'
+  operation_room: bridge
+  requirements: []
+- name: pcd
+  operation: exibir_log_emergencia
+  arguments: []
+  syntax: pcd exibir_log_emergencia
+  description: Exibe o último log de evento crítico ou mensagem de emergência. É o
+    comando essencial para entender a situação inicial da nave.
+  messages:
+    success: O comando 'exibir_log_emergencia' do módulo 'pcd' foi executado com sucesso.
+    failure: ''
+    log: Comando 'exibir_log_emergencia' do módulo 'pcd' executado sem argumentos.
+  operation_room: bridge
+  requirements:
+  - general_authorization
+- name: ponte
+  operation: autorizar
+  arguments:
+  - id_modulo
+  - codigo_operacao
+  syntax: ponte autorizar [id_modulo] [codigo_operacao]
+  description: Autoriza uma operação específica no subsistema da Ponte de Comando
+    para o módulo indicado, usando o código de operação fornecido.
+  operation_room: bridge
+  requirements:
+  - general_authorization
+  messages:
+    success: '`Operação `[codigo_operacao]` autorizada para o módulo `[id_modulo]`.'
+    failure: '`Falha na autorização. Código `0x0130B`.'
+    log: 'Log: comando autorizar executado por [USUARIO] em [TIMESTAMP].'

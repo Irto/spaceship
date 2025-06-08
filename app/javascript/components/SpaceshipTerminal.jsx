@@ -22,6 +22,7 @@ export default function SpaceshipTerminal() {
   const isResettingRef = useRef(false);
   const terminalStatusIntervalRef = useRef(null);
   const resetTimeoutRef = useRef(null);
+  const initialCheckDoneRef = useRef(false);
 
   useEffect(() => {
     const storedName = localStorage.getItem(TERMINAL_NAME_STORAGE_KEY) || '';
@@ -32,7 +33,7 @@ export default function SpaceshipTerminal() {
     terminalNameRef.current = storedName;
     terminalIdRef.current = storedId;
 
-    checkTerminalStatus().then(() => {
+    checkTerminalStatus(true).then(() => {
       if (!isResettingRef.current) {
         console.log('[BOOT] Starting boot sequence');
         bootSequence();
@@ -195,7 +196,7 @@ export default function SpaceshipTerminal() {
     }, 1000);
   };
 
-  const checkTerminalStatus = async () => {
+  const checkTerminalStatus = async (isInitial = false) => {
     if (isResettingRef.current) return;
     try {
       const roomName = getRoomFromQueryParams();
@@ -209,7 +210,7 @@ export default function SpaceshipTerminal() {
       const newName = data.terminal.name;
       console.log('[STATUS] Fetched terminal status:', data.terminal);
 
-      if (terminalIdRef.current && terminalIdRef.current !== newId) {
+      if (!isInitial && terminalIdRef.current && terminalIdRef.current !== newId) {
         console.warn('[STATUS] Terminal ID changed. Reset required.');
         simulateReset(newId, newName);
       } else {

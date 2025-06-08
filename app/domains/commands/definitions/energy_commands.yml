@@ -1,63 +1,115 @@
 commands:
-  - name: "dist_energia"
-    operation: "estado"
-    arguments: []
-    syntax: "dist_energia estado"
-    description: "Retorna o estado da rede de distribuição."
-    messages:
-      success: ""
-      failure: ""
-      log: ""
-
-  - name: "dist_energia"
-    operation: "reroutear"
-    arguments:
-      - "rede_origem"
-      - "rede_destino"
-    syntax: "dist_energia reroutear [rede_origem] [rede_destino]"
-    description: "Tenta redirecionar energia entre redes."
-    messages:
-      success: ""
-      failure: ""
-      log: ""
-
-  - name: "dist_energia"
-    operation: "carregar_capacitores"
-    arguments: []
-    syntax: "dist_energia carregar_capacitores"
-    description: "Inicia o carregamento dos capacitores principais da rede."
-    messages:
-      success: ""
-      failure: ""
-      log: ""
-
-  - name: "gerador_aux"
-    operation: "estado"
-    arguments: []
-    syntax: "gerador_aux estado"
-    description: "Verifica o status dos geradores auxiliares."
-    messages:
-      success: ""
-      failure: ""
-      log: ""
-
-  - name: "gerador_aux"
-    operation: "ativar"
-    arguments:
-      - "numero_gerador"
-    syntax: "gerador_aux ativar [numero_gerador]"
-    description: "Tenta ativar um gerador auxiliar específico."
-    messages:
-      success: ""
-      failure: ""
-      log: ""
-
-  - name: "gerador_aux"
-    operation: "verificar_combustivel"
-    arguments: []
-    syntax: "gerador_aux verificar_combustivel"
-    description: "Retorna o nível de combustível dos geradores auxiliares."
-    messages:
-      success: ""
-      failure: ""
-      log: ""
+- name: dist_energia
+  operation: estado
+  arguments: []
+  syntax: dist_energia estado
+  description: Retorna o estado da rede de distribuição.
+  messages:
+    success: O comando 'estado' do módulo 'dist_energia' foi executado com sucesso.
+    failure: ''
+    log: Comando 'estado' do módulo 'dist_energia' executado sem argumentos.
+  operation_room: energy
+  requirements:
+  - general_authorization
+  - energy_stabilization
+- name: dist_energia
+  operation: reroutear
+  arguments:
+  - rede_origem
+  - rede_destino
+  syntax: dist_energia reroutear [rede_origem] [rede_destino]
+  description: Tenta redirecionar energia entre redes.
+  messages:
+    success: O comando 'reroutear' do módulo 'dist_energia' foi executado com sucesso
+      com os parâmetros `[rede_origem]`, `[rede_destino]`.
+    failure: ''
+    log: 'Comando ''reroutear'' do módulo ''dist_energia'' executado com argumentos:
+      `[rede_origem]`, `[rede_destino]`.'
+  operation_room: energy
+  requirements:
+  - general_authorization
+  - energy_stabilization
+- name: dist_energia
+  operation: carregar_capacitores
+  arguments: []
+  syntax: dist_energia carregar_capacitores
+  description: Inicia o carregamento dos capacitores principais da rede.
+  messages:
+    success: O comando 'carregar_capacitores' do módulo 'dist_energia' foi executado
+      com sucesso.
+    failure: ''
+    log: Comando 'carregar_capacitores' do módulo 'dist_energia' executado sem argumentos.
+  operation_room: energy
+  requirements:
+  - general_authorization
+  - energy_stabilization
+- name: gerador_aux
+  operation: estado
+  arguments: []
+  syntax: gerador_aux estado
+  description: Verifica o status dos geradores auxiliares.
+  messages:
+    success: O comando 'estado' do módulo 'gerador_aux' foi executado com sucesso.
+    failure: ''
+    log: Comando 'estado' do módulo 'gerador_aux' executado sem argumentos.
+  operation_room: energy
+  requirements:
+  - general_authorization
+  - energy_stabilization
+- name: gerador_aux
+  operation: ativar
+  arguments:
+  - numero_gerador
+  syntax: gerador_aux ativar [numero_gerador]
+  description: Tenta ativar um gerador auxiliar específico.
+  messages:
+    success: O comando 'ativar' do módulo 'gerador_aux' foi executado com sucesso
+      com os parâmetros `[numero_gerador]`.
+    failure: ''
+    log: 'Comando ''ativar'' do módulo ''gerador_aux'' executado com argumentos: `[numero_gerador]`.'
+  operation_room: energy
+  requirements:
+  - general_authorization
+  - energy_stabilization
+- name: gerador_aux
+  operation: verificar_combustivel
+  arguments: []
+  syntax: gerador_aux verificar_combustivel
+  description: Retorna o nível de combustível dos geradores auxiliares.
+  messages:
+    success: O comando 'verificar_combustivel' do módulo 'gerador_aux' foi executado
+      com sucesso.
+    failure: ''
+    log: Comando 'verificar_combustivel' do módulo 'gerador_aux' executado sem argumentos.
+  operation_room: energy
+  requirements:
+  - general_authorization
+  - energy_stabilization
+- name: reator_principal
+  operation: estado
+  arguments: []
+  syntax: reator_principal estado
+  description: Retorna o status operacional do Reator Principal, incluindo o código
+    de erro atual.
+  operation_room: energy
+  requirements: []
+  messages:
+    success: 'Reator Principal operando normalmente. Código `0x01000`.'
+    failure: 'Reator Principal operando em código `0x01020`. FALHA CRÍTICA: Flutuação de energia induzida por ressonância gravitacional externa. Análise do fluxo taquionico para recalibragem manual da frequencia harmonica SCG_RESSONANCIA é necessária.'
+    log: ''
+  requirements:
+  - general_authorization
+- name: reator_principal
+  operation: ler_fluxo_taquionico_ambiente
+  arguments: []
+  syntax: reator_principal ler_fluxo_taquionico_ambiente
+  description: Realiza uma varredura e reporta o índice de fluxo taquiônico ambiente,
+    usado em calibrações avançadas de sistemas sensíveis à gravidade.
+  operation_room: energy
+  requirements: []
+  messages:
+    success: 'Leitura do fluxo taquiônico ambiente: `7.384` unidades.'
+    failure: ''
+    log: ''
+  requirements:
+  - general_authorization

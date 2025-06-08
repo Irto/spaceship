@@ -11,8 +11,9 @@ module Commands
 
       render(json: {
         status: execution_result.status,
+        continue_url: execution_result.continue_url,
         message: markdown.render(execution_result.message)
-      }, status: :ok)
+      }.compact, status: :ok)
     end
 
     private
