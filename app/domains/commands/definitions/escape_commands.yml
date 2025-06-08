@@ -174,7 +174,7 @@ commands:
   syntax: csl iniciar_lancamento
   description: Inicia contagem regressiva e ejeção do módulo de fuga.
   messages:
-    success: 'Código de armar ejetores aceito. Sequência de ejeção iniciada... T-10, 9, 8...'
+    success: 'Fim de jogo! Módulo liberado.'
     failure: 'CÓDIGO DE ARMAR EJETORES INVÁLIDO. Lançamento abortado. Código 0x9950C.'
     log: ''
   operation_room: escape

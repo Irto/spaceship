@@ -47,7 +47,7 @@ export default function SpaceshipTerminal() {
     terminalStatusIntervalRef.current = setInterval(() => {
       console.log('[INTERVAL] Running terminal status check');
       checkTerminalStatus();
-    }, 10000);
+    }, 5000);
 
     return () => {
       if (terminalStatusIntervalRef.current) {

@@ -66,24 +66,6 @@ commands:
   operation_room: bridge
   requirements: []
 - name: pap
-  operation: liberar_modulo_fuga
-  arguments:
-  - id_modulo
-  - codigo_acesso_capitao
-  syntax: pap liberar_modulo_fuga [id_modulo] [codigo_acesso_capitao]
-  description: Tenta autorizar a liberação de um Módulo de Fuga, requerindo ID do
-    módulo e código de nível Capitão.
-  messages:
-    success: Autorização Final para Módulo de Fuga `[id_modulo]` concedida. Código
-      0x01300.
-    failure: Código 0x01355 (Autorização concedida, mas Módulo `[id_modulo]` reporta
-      indisponibilidade. Verifique Sala 99).
-    log: 'Comando `liberar_modulo_fuga` do módulo `pap` executado com argumentos:
-      `[id_modulo]`, `[codigo_acesso_capitao]`.'
-  operation_room: bridge
-  requirements:
-  - general_authorization
-- name: pap
   operation: autenticar
   arguments:
   - codigo_pessoal

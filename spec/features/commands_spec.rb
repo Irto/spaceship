@@ -115,6 +115,12 @@ RSpec.describe 'Executing commands', type: :request do
 
         expect(json['message']).to eq("<p>Processo finalizado! Sistema calibrado e operando em níveis de energia normais.</p>\n")
         expect(json['status']).to eq('finished')
+
+        # Fim do jogo!
+        post commands_execution_path, params: { execution: { name: 'csl', operation: 'iniciar_lancamento', terminal_id: escape_room_id } }
+
+        expect(json['status']).to eq('finished')
+        expect(json['message']).to eq("<p>Fim de jogo! Módulo liberado.</p>\n")
       end
     end
 
